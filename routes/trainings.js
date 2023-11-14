@@ -1,23 +1,16 @@
-app.get("/api/trainings", (req, res) => {
-  res.status(200).json({ success: true, msg: "Show all trainings " });
-});
-
-app.get("/api/trainings/:id", (req, res) => {
-  res.status(200).json({ success: true, msg: `Get training ${req.params.id}` });
-});
-
-app.post("/api/trainings", (req, res) => {
-  res.status(200).json({ success: true, msg: "Create new training" });
-});
-
-app.put("/api/trainings/:id", (req, res) => {
-  res
-    .status(200)
-    .json({ success: true, msg: `Update training ${req.params.id}` });
-});
-
-app.delete("/api/trainings/:id", (req, res) => {
-  res
-    .status(200)
-    .json({ success: true, msg: `Delete training ${req.params.id}` });
-});
+const express = require("express");
+const {
+  getTraining,
+  getTrainings,
+  createTraining,
+  updateTraining,
+  deleteTraining,
+} = require("../controllers/bootcamps");
+const router = express.Router();
+router.route("/").get(getTrainings).post(createTraining);
+router
+  .route("/:id")
+  .get(getTraining)
+  .put(updateTraining)
+  .delete(deleteTraining);
+module.exports = router;
