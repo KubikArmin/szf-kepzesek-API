@@ -1,4 +1,5 @@
 const express = require("express");
+const errorHandler = require("./middleware/error")
 require("dotenv").config(); // A .env fájlt olvassa
 
 const trainings = require("./routes/trainings");
@@ -31,4 +32,6 @@ app.use(express.json())
 // app.use(logger);
 
 app.use("/api/trainings", trainings);
+app.use(errorHandler)
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
