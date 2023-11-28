@@ -24,13 +24,6 @@ database.once("connected", () => {
 
 app.use(express.json())
 
-// const logger = (req, res, next) => {
-//   req.hello = "Hello World!";
-//   console.log("Middleware ran.");
-//   next();
-// };
-// app.use(logger);
-
 app.use("/api/trainings", trainings);
 app.use(errorHandler)
 
