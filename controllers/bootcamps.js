@@ -6,7 +6,7 @@ exports.createTraining = async (req, res, next) => {
     const training = await Training.create(req.body);
     res.status(201).json({ success: true, data: training });
   } catch (error) {
-    res.status(400).json({ success: false });
+    next(error)
   }
 };
           
